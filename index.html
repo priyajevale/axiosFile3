@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Name and Job Form</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+  <h2>Enter Your Name and Job</h2>
+
+  <form id="myForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <br>
+
+    <label for="job">Job:</label>
+    <input type="text" id="job" name="job" required>
+
+    <br>
+
+    <input type="button" value="Submit" onclick="submitForm()">
+  </form>
+
+  <script>
+    function submitForm() {
+      var formData = {
+        name: document.getElementById('name').value,
+        job: document.getElementById('job').value
+      };
+
+      // Replace "YOUR_CRUDCRUD_API_ENDPOINT" with the actual endpoint provided by crudcrud.com
+      var apiUrl = "https://crudcrud.com/api/632028aa46974a219e658d70068f0366";
+
+      // Make a POST request using Axios
+      axios.post("https://crudcrud.com/api/632028aa46974a219e658d70068f0366/StudentData", formData)
+        .then(function (response) {
+          console.log('Data sent successfully:', response.data);
+        })
+        .catch(function (error) {
+          console.error('Error sending data:', error);
+        });
+    }
+  </script>
+
+</body>
